@@ -2,6 +2,8 @@
 
 JS library to make links on your webpage into sponsored content.
 
+You can checkout an example [here](https://keyvanm.github.io/sponsoredjs/). 
+
 ## Getting Started
 
 These instructions will get you turning the links on your website
