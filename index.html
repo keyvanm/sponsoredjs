@@ -9,6 +9,11 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/keyvanm/sponsoredjs@0.2.0/dist/sponsored.min.css">
+    <style media="screen">
+      .auto-gen-ad label {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <p>Click on one of the links to see a demo of sponsored.js</p>
@@ -36,8 +41,64 @@
        <p>This link is sponsored by babat</p>
     </div>
 
+    <hr />
+    <h1>Auto generate sponsored links</h1>
+    <form class="auto-gen-ad">
+      <label>
+        Original link text
+        <input id="gen-link-text">
+      </label>
+      <label>
+        Original link href
+        <input id="gen-link-href">
+      </label>
+      <label>
+        Ad text
+        <textarea id="gen-ad-text"></textarea>
+      </label>
+      <label>
+        Ad ad link
+        <input id="gen-ad-link">
+      </label>
+      <label>
+        Ad image src
+        <input id="gen-ad-img">
+      </label>
+      <label><button id="gen-btn">Generate</button></label>
+    </form>
+    <textarea id="gend-html" rows="8" cols="80"></textarea>
+    <!-- <div>
+      <h2>It'll look like this</h2>
+      <span id="gend-example"></span>
+    </div> -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/keyvanm/sponsoredjs@0.2.0/dist/sponsored.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        $( "#gen-btn" ).click(function (e) {
+          e.preventDefault();
+          var linkHref = $("#gen-link-href").val();
+          var adText = $("#gen-ad-text").val();
+          var adLink = $("#gen-ad-link").val();
+          var adImg = $("#gen-ad-img").val();
+          var linkText = $("#gen-link-text").val();
+          var newA = `
+            <a
+              href="${linkHref}"
+              class="sponsoredjs-popover"
+              data-ad-text="${adText}"
+              data-ad-link="${adLink}"
+              data-ad-img="${adImg}">
+              ${linkText}
+            </a>
+          `;
+          $("#gend-html").val(newA);
+          // $("#gend-example").html(newA);
+        })
+      });
+    </script>
   </body>
 </html>
