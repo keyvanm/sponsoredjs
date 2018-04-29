@@ -2,7 +2,7 @@
 
 JS library to make links on your webpage into sponsored content.
 
-You can checkout an example [here](https://keyvanm.github.io/sponsoredjs/). 
+You can checkout an example [here](https://keyvanm.github.io/sponsoredjs/).
 
 ## Getting Started
 
@@ -39,6 +39,19 @@ Add the JS script at the end of the `<body>` tag
 ```
 
 ## Creating sponsored links
+Add class `ponsoredjs-popover` to the `<a>` tag where your link is. Then add attribute `data-ad-text` with the text you want to show to the users, `data-ad-img` with the link to img src of your ad, and `data-ad-link` for the link you want people to go to when they click on the ad.
+```html
+<a
+  href="https://github.com/keyvanm/sponsoredjs"
+  class="sponsoredjs-popover"
+  data-ad-text="This link is sponsored by sponsoredjs"
+  data-ad-link="https://github.com/keyvanm/sponsoredjs"
+  data-ad-img="https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png">
+  GitHub
+</a>
+```
+
+## Creating custom content for popover
 Create a `<div>` anywhere within `<body>` with class `sponsoredjs-content`, and give it a unique ID.
 ```html
 <div id="ad1" class="sponsoredjs-content">
