@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/keyvanm/sponsoredjs@0.2.0/dist/sponsored.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/keyvanm/sponsoredjs@0.2.1/dist/sponsored.min.css">
     <style media="screen">
       .auto-gen-ad label {
         display: block;
@@ -67,14 +67,14 @@
       <label><button id="gen-btn">Generate</button></label>
     </form>
     <textarea id="gend-html" rows="8" cols="80"></textarea>
-    <!-- <div>
+    <div>
       <h2>It'll look like this</h2>
       <span id="gend-example"></span>
-    </div> -->
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/keyvanm/sponsoredjs@0.2.0/dist/sponsored.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/keyvanm/sponsoredjs@0.2.1/dist/sponsored.min.js"></script>
 
     <script type="text/javascript">
       $(function() {
@@ -96,7 +96,8 @@
             </a>
           `;
           $("#gend-html").val(newA);
-          // $("#gend-example").html(newA);
+          $("#gend-example").html(newA);
+          sponsorify($($("#gend-example").find(".sponsoredjs-popover")[0]));
         })
       });
     </script>
