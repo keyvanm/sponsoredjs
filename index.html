@@ -45,12 +45,8 @@
     <h1>Auto generate sponsored links</h1>
     <form class="auto-gen-ad">
       <label>
-        Original link text
-        <input id="gen-link-text">
-      </label>
-      <label>
-        Original link href
-        <input id="gen-link-href">
+        Paste your anchor (&lt;a&gt;) tag here
+        <textarea id="gen-a-tag" rows="8" cols="80"></textarea>
       </label>
       <label>
         Ad text
@@ -80,23 +76,17 @@
       $(function() {
         $( "#gen-btn" ).click(function (e) {
           e.preventDefault();
-          var linkHref = $("#gen-link-href").val();
-          var adText = $("#gen-ad-text").val();
+          var newA = $.parseHTML($("#gen-a-tag").val());
+          $(newA).addClass("sponsoredjs-popover");
+          $(newA).attr("data-ad-text", $("#gen-ad-text").val());
           var adLink = $("#gen-ad-link").val();
-          var adImg = $("#gen-ad-img").val();
-          var linkText = $("#gen-link-text").val();
-          var newA = `
-            <a
-              href="${linkHref}"
-              class="sponsoredjs-popover"
-              data-ad-text="${adText}"
-              data-ad-link="${adLink}"
-              data-ad-img="${adImg}">
-              ${linkText}
-            </a>
-          `;
-          $("#gend-html").val(newA);
+          if (adLink.indexOf("http") != 0) {
+            adLink = "//" + adLink;
+          }
+          $(newA).attr("data-ad-link", adLink);
+          $(newA).attr("data-ad-img", $("#gen-ad-img").val());
           $("#gend-example").html(newA);
+          $("#gend-html").val($("#gend-example").html());
           sponsorify($($("#gend-example").find(".sponsoredjs-popover")[0]));
         })
       });
